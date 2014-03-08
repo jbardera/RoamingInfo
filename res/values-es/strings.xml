@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="icon_names_prefix">ic_stat_notify_</string>
+    <string name="app_name">Roaming Info</string>
+    <string name="string1">NO CARRIER</string>
+    <string name="string3">Pulsa para desactivar las notificaciones</string>
+    <string name="string4">Roaming Info\nArrancado/Actualizado</string>
+    <string name="string5">Servicio Roaming Info\nPARADO</string>
+</resources>
