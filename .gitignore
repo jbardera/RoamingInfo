@@ -11,10 +11,14 @@
 # Generated files
 bin/
 gen/
+R.java
 
 # Gradle files
 .gradle/
 build/
+
+# git files
+.gitignore
 
 # Local configuration file (sdk path, etc)
 local.properties
