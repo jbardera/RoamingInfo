@@ -6,4 +6,6 @@
     <string name="string3">Tap to disable notifications</string>
     <string name="string4">Roaming Info\nStarted/Refreshed</string>
     <string name="string5">Roaming Info service\nSTOPPED</string>
+	<string name="string6">Data ENABLED (cell)</string>
+	<string name="string7">Data DISABLED (cell)</string>
 </resources>

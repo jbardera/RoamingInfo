@@ -7,11 +7,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 
 public class ConnectivityChangeReceiver extends BroadcastReceiver 
 {
 	String tag="Roaming Info";
-	static final int ID_NOTIFICACION_CREAR = 1;
+	static final int ID_NOTI_ROAMING = 1;
+	static final int ID_NOTI_DATA = 2;
 	String carrierName;
 	String operatorName;
 	String carrierCountry;
@@ -19,14 +21,17 @@ public class ConnectivityChangeReceiver extends BroadcastReceiver
 	String networkOperator; //MCC+MNC of current operator, to display its icon
 	boolean roaming;
 	String toShow;
-	static public NotificationManager nm;
+	static public NotificationManager nm, nm2;
 	
 	@SuppressWarnings("deprecation")
 	@Override public void onReceive(Context context, Intent intent) 
 	{
 		TelephonyManager mg = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
 		nm = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);  
+		nm2 = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
 	
+		
+		// code below for operator info (roaming)
 		carrierName = mg.getNetworkOperatorName();
 		operatorName = mg.getSimOperatorName();
 		carrierCountry = mg.getNetworkCountryIso();
@@ -61,11 +66,20 @@ public class ConnectivityChangeReceiver extends BroadcastReceiver
 		Notification noti = new Notification(imageResource,toShow,System.currentTimeMillis());
 		noti.setLatestEventInfo(context, toShow,context.getResources().getString(R.string.string3), intencionPendiente);
 		
-		//noti.flags |= Notification.FLAG_ONGOING_EVENT; // to avoid dimiss it by swiping
-		//noti.flags |= Notification.FLAG_NO_CLEAR; // to avoid dimiss it by clear all notifications
+		//noti.flags |= Notification.FLAG_ONGOING_EVENT; // to avoid dismiss it by swiping
+		//noti.flags |= Notification.FLAG_NO_CLEAR; // to avoid dismiss it by clear all notifications
 		
-		nm.notify(ID_NOTIFICACION_CREAR, noti); 
+		nm.notify(ID_NOTI_ROAMING, noti); 
 		
+		// code below for data connection activity
+		if (mg.getDataState()!=0) // data connection ON
+		{
+			Notification noti2 = new Notification(R.drawable.dataon3,toShow,System.currentTimeMillis());
+			intencionPendiente = PendingIntent.getActivity(context, 1, new Intent(context, ShutDown.class), 0);
+			noti2.setLatestEventInfo(context,context.getResources().getString(R.string.string6),context.getResources().getString(R.string.string3), intencionPendiente);
+			nm2.notify(ID_NOTI_DATA,noti2);
+			Log.d(tag, "Data connection ON!");
+		} else { nm2.cancel(ConnectivityChangeReceiver.ID_NOTI_DATA); } 
 		/*
 		Log.e(tag, "action: " + intent.getAction());
 		Log.e(tag, "component: " + intent.getComponent());

@@ -36,7 +36,8 @@ public class RoamingInfoService extends Service
 
 	@Override public void onDestroy() 
 	{
-			ConnectivityChangeReceiver.nm.cancel(ConnectivityChangeReceiver.ID_NOTIFICACION_CREAR); // to remove the notification
+			ConnectivityChangeReceiver.nm.cancel(ConnectivityChangeReceiver.ID_NOTI_ROAMING); // to remove the notification for roaming info
+			ConnectivityChangeReceiver.nm.cancel(ConnectivityChangeReceiver.ID_NOTI_DATA); // to remove the notification for data connection state
 			if (changeReceiver!=null) unregisterReceiver(changeReceiver); // to unregister the broadcast listener
 			PackageManager pm  = this.getPackageManager();
 	        ComponentName componentName = new ComponentName(this, ConnectivityChangeReceiver.class);
