@@ -62,7 +62,7 @@ public class ConnectivityChangeReceiver extends BroadcastReceiver
 		
 		if (imageResource==0) imageResource = context.getResources().getIdentifier("ic_stat_notify_rssi_in_range","drawable", context.getPackageName());
 		
-		//Notification noti = new Notification(R.drawable.ic_stat_notify_26821,toShow,System.currentTimeMillis());
+		//Notification noti = new Notification(R.drawable.ic_stat_notify_302320,toShow,System.currentTimeMillis());
 		Notification noti = new Notification(imageResource,toShow,System.currentTimeMillis());
 		noti.setLatestEventInfo(context, toShow,context.getResources().getString(R.string.string3), intencionPendiente);
 		
