@@ -6,32 +6,30 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.os.Build;
 import android.telephony.TelephonyManager;
-import android.util.Log;
 
 public class ConnectivityChangeReceiver extends BroadcastReceiver 
 {
-	String tag="Roaming Info";
-	static final int ID_NOTI_ROAMING = 1;
-	static final int ID_NOTI_DATA = 2;
-	String carrierName;
-	String operatorName;
-	String carrierCountry;
-	String operatorCountryISO;
-	String networkOperator; //MCC+MNC of current operator, to display its icon
-	boolean roaming;
-	String toShow;
-	static public NotificationManager nm, nm2;
+	private String carrierName;
+	private String operatorName;
+	private String carrierCountry;
+	private String operatorCountryISO;
+	private String networkOperator; //MCC+MNC of current operator, to display its icon
+	private boolean roaming;
+	private String toShow;
+	
 	
 	@SuppressWarnings("deprecation")
 	@Override public void onReceive(Context context, Intent intent) 
 	{
 		TelephonyManager mg = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
-		nm = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);  
-		nm2 = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
-	
+		RoamingInfoService.nm= (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+		SharedPreferences mySettings;
 		
-		// code below for operator info (roaming)
+		//code below for operator info (roaming)
 		carrierName = mg.getNetworkOperatorName();
 		operatorName = mg.getSimOperatorName();
 		carrierCountry = mg.getNetworkCountryIso();
@@ -53,7 +51,7 @@ public class ConnectivityChangeReceiver extends BroadcastReceiver
 			toShow=context.getResources().getString(R.string.string1)+" ("+operatorName+":"+operatorCountryISO+")";
 		}
 		
-		PendingIntent intencionPendiente = PendingIntent.getActivity(context, 0, new Intent(context, ShutDown.class), 0);
+		PendingIntent intencionPendiente = PendingIntent.getActivity(context, 0, new Intent(context, ShutDown.class), Intent.FLAG_ACTIVITY_NO_HISTORY);
 		
 		//Notification noti = new Notification(R.drawable.stat_notify_rssi_in_range,toShow,System.currentTimeMillis());
 		
@@ -62,40 +60,35 @@ public class ConnectivityChangeReceiver extends BroadcastReceiver
 		
 		if (imageResource==0) imageResource = context.getResources().getIdentifier("ic_stat_notify_rssi_in_range","drawable", context.getPackageName());
 		
-		//Notification noti = new Notification(R.drawable.ic_stat_notify_302320,toShow,System.currentTimeMillis());
+		//Notification noti = new Notification(R.drawable.ic_stat_notify_22201,toShow,System.currentTimeMillis());
 		Notification noti = new Notification(imageResource,toShow,System.currentTimeMillis());
 		noti.setLatestEventInfo(context, toShow,context.getResources().getString(R.string.string3), intencionPendiente);
 		
 		//noti.flags |= Notification.FLAG_ONGOING_EVENT; // to avoid dismiss it by swiping
 		//noti.flags |= Notification.FLAG_NO_CLEAR; // to avoid dismiss it by clear all notifications
 		
-		nm.notify(ID_NOTI_ROAMING, noti); 
+		RoamingInfoService.nm.notify(RoamingInfoService.ID_NOTI_ROAMING, noti); 
 		
-		// code below for data connection activity
-		if (mg.getDataState()!=0) // data connection ON
+		//code below for data connection activity
+		if (mg.getDataState()!=0) //data connection ON
 		{
-			Notification noti2 = new Notification(R.drawable.dataon3,toShow,System.currentTimeMillis());
-			intencionPendiente = PendingIntent.getActivity(context, 1, new Intent(context, ShutDown.class), 0);
-			noti2.setLatestEventInfo(context,context.getResources().getString(R.string.string6),context.getResources().getString(R.string.string3), intencionPendiente);
-			nm2.notify(ID_NOTI_DATA,noti2);
-			Log.d(tag, "Data connection ON!");
-		} else { nm2.cancel(ConnectivityChangeReceiver.ID_NOTI_DATA); } 
-		/*
-		Log.e(tag, "action: " + intent.getAction());
-		Log.e(tag, "component: " + intent.getComponent());
-		Bundle extras = intent.getExtras();
-		if (extras != null) 
-		{
-			for (String key: extras.keySet()) 
+			if (Build.VERSION.SDK_INT>=11) mySettings = context.getSharedPreferences("MyPrefs", Context.MODE_MULTI_PROCESS);
+				else mySettings = context.getSharedPreferences("MyPrefs",0);
+			Boolean showme = mySettings.getBoolean("showdata",true);
+			if (showme)
 			{
-				Log.e(tag, "key [" + key + "]: " +extras.get(key));
+				Notification noti2 = new Notification(R.drawable.dataon3,context.getResources().getString(R.string.string6),System.currentTimeMillis());
+				PendingIntent iPendiente2 = PendingIntent.getActivity(context, 0, new Intent(context, ShutDataNot.class), Intent.FLAG_ACTIVITY_NO_HISTORY);
+				noti2.setLatestEventInfo(context,context.getResources().getString(R.string.string6),context.getResources().getString(R.string.string8), iPendiente2);
+				noti2.defaults |=Notification.DEFAULT_SOUND;
+				noti2.flags|=Notification.FLAG_AUTO_CANCEL;
+				//notification.defaults |= Notification.DEFAULT_VIBRATE;
+				noti2.ledOnMS=1000; //light on in milliseconds
+				noti2.ledOffMS=4000; //light off in milliseconds
+				noti2.ledARGB=Color.RED; 
+				noti2.flags|=Notification.FLAG_SHOW_LIGHTS;
+				RoamingInfoService.nm.notify(RoamingInfoService.ID_NOTI_DATA,noti2);
 			}
-		}
-		else 
-		{
-			Log.e(tag, "no extras");
-		}
-		*/
+		} else { RoamingInfoService.nm.cancel(RoamingInfoService.ID_NOTI_DATA); } 
 	}
-	
 }
