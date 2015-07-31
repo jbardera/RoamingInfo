@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.brapeba.roaminginfo"
-    android:versionCode="17"
-    android:versionName="2.2" >
+    android:versionCode="22"
+    android:versionName="2.7" >
 
     <uses-sdk
         android:minSdkVersion="7"
-        android:targetSdkVersion="22" 
+        android:targetSdkVersion="20" 
         />
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />

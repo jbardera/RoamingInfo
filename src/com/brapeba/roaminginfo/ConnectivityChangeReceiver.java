@@ -60,7 +60,7 @@ public class ConnectivityChangeReceiver extends BroadcastReceiver
 		
 		if (imageResource==0) imageResource = context.getResources().getIdentifier("ic_stat_notify_rssi_in_range","drawable", context.getPackageName());
 		
-		//Notification noti = new Notification(R.drawable.ic_stat_notify_22201,toShow,System.currentTimeMillis());
+		//Notification noti = new Notification(R.drawable.ic_stat_notify_26203,toShow,System.currentTimeMillis());
 		Notification noti = new Notification(imageResource,toShow,System.currentTimeMillis());
 		noti.setLatestEventInfo(context, toShow,context.getResources().getString(R.string.string3), intencionPendiente);
 		
@@ -80,13 +80,13 @@ public class ConnectivityChangeReceiver extends BroadcastReceiver
 				Notification noti2 = new Notification(R.drawable.dataon3,context.getResources().getString(R.string.string6),System.currentTimeMillis());
 				PendingIntent iPendiente2 = PendingIntent.getActivity(context, 0, new Intent(context, ShutDataNot.class), Intent.FLAG_ACTIVITY_NO_HISTORY);
 				noti2.setLatestEventInfo(context,context.getResources().getString(R.string.string6),context.getResources().getString(R.string.string8), iPendiente2);
-				noti2.defaults |=Notification.DEFAULT_SOUND;
+				//noti2.defaults |=Notification.DEFAULT_SOUND;
 				noti2.flags|=Notification.FLAG_AUTO_CANCEL;
 				//notification.defaults |= Notification.DEFAULT_VIBRATE;
 				noti2.ledOnMS=1000; //light on in milliseconds
 				noti2.ledOffMS=4000; //light off in milliseconds
 				noti2.ledARGB=Color.RED; 
-				noti2.flags|=Notification.FLAG_SHOW_LIGHTS;
+				//noti2.flags|=Notification.FLAG_SHOW_LIGHTS;
 				RoamingInfoService.nm.notify(RoamingInfoService.ID_NOTI_DATA,noti2);
 			}
 		} else { RoamingInfoService.nm.cancel(RoamingInfoService.ID_NOTI_DATA); } 
