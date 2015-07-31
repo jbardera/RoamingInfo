@@ -3,9 +3,10 @@
     <string name="icon_names_prefix">ic_stat_notify_</string>
     <string name="app_name">Roaming Info</string>
     <string name="string1">NO CARRIER</string>
-    <string name="string3">Pulsa para desactivar las notificaciones</string>
+    <string name="string3">Pulsa para desactivar Roaming Info</string>
     <string name="string4">Roaming Info\nArrancado/Actualizado</string>
     <string name="string5">Servicio Roaming Info\nPARADO</string>
-    <string name="string6">Conexin de datos ACTIVA (móvil)</string>
+    <string name="string6">Conexión de datos ACTIVA (móvil)</string>
 	<string name="string7">Conexión de datos DESACTIVADA (móvil)</string>
+	<string name="string8">Pulsa para no mostrar más esta notificación</string>
 </resources>

@@ -3,9 +3,10 @@
     <string name="icon_names_prefix">ic_stat_notify_</string>
     <string name="app_name">Roaming Info</string>
     <string name="string1">NO CARRIER</string>
-    <string name="string3">Tap to disable notifications</string>
+    <string name="string3">Tap to quit Roaming Info</string>
     <string name="string4">Roaming Info\nStarted/Refreshed</string>
     <string name="string5">Roaming Info service\nSTOPPED</string>
-	<string name="string6">Data ENABLED (cell)</string>
-	<string name="string7">Data DISABLED (cell)</string>
+	<string name="string6">Data ENABLED (cellular)</string>
+	<string name="string7">Data DISABLED (cellular)</string>
+	<string name="string8">Tap to do not show more this notification</string>
 </resources>
