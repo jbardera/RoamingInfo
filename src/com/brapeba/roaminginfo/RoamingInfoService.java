@@ -17,6 +17,7 @@ public class RoamingInfoService extends Service
 	static public String tag="Roaming Info";
 	static public NotificationManager nm;
 	static final int ID_NOTI_ROAMING = 100;
+	static final int ID_NOTI_ROAMING2 = 101; //2nd SIM Mediatek
 	static final int ID_NOTI_DATA = 110;
 	static public final String PREFS = "MyPrefs";
 	static public SharedPreferences settings;
@@ -24,11 +25,7 @@ public class RoamingInfoService extends Service
 	@Override public void onCreate() 
 	{
 		super.onCreate();
-		settings = getSharedPreferences(PREFS, MODE_MULTI_PROCESS);
-		SharedPreferences.Editor editor = settings.edit();
-		editor.putBoolean("showdata",true);
-		editor.commit();
-		
+				
 		PackageManager pm  = this.getPackageManager();
 		ComponentName componentName = new ComponentName(this, ConnectivityChangeReceiver.class);
 		pm.setComponentEnabledSetting(componentName,PackageManager.COMPONENT_ENABLED_STATE_ENABLED,PackageManager.DONT_KILL_APP);
@@ -47,6 +44,7 @@ public class RoamingInfoService extends Service
 	@Override public void onDestroy() 
 	{
 			nm.cancel(ID_NOTI_ROAMING); // to remove the notification for roaming info
+			nm.cancel(ID_NOTI_ROAMING2); // to remove the notification for roaming info sim2
 			nm.cancel(ID_NOTI_DATA); // to remove the notification for data connection state
 			if (changeReceiver!=null) unregisterReceiver(changeReceiver); // to unregister the broadcast listener
 			PackageManager pm  = this.getPackageManager();

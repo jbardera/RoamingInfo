@@ -6,7 +6,6 @@
 
 package com.brapeba.roaminginfo;
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
