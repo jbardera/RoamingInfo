@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-public class ShutDataNot extends Activity {
+public class ShutDataNot extends Activity 
+{
+	final String PREFS = "MyPrefs";
+	
 	@Override public void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
@@ -25,7 +28,7 @@ public class ShutDataNot extends Activity {
 		SharedPreferences mySettings;
 		
 		super.onResume();
-		mySettings = getSharedPreferences("MyPrefs", MODE_MULTI_PROCESS);
+		mySettings = getSharedPreferences(PREFS, MODE_MULTI_PROCESS);
 		SharedPreferences.Editor editor = mySettings.edit();
 		editor.putBoolean("showdata",false);
 		editor.commit();
