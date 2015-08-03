@@ -21,4 +21,6 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
+For Mediatek API & License go to: http://labs.mediatek.com/site/global/developer_tools/mediatek_android/mediatek_sdk_android/index.gsp
+
 For more information, please refer to <http://unlicense.org>
