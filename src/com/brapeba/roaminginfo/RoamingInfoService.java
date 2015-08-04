@@ -83,7 +83,7 @@ public class RoamingInfoService extends Service
 			editor.putString("sci",operatorCountryISO);
 			editor.commit();
 			if (roaming) toShow=toShow+carrierName+":"+carrierCountry+" ("+operatorName+":"+operatorCountryISO+")";
-			else toShow=toShow+carrierName+" "+networkOperator;
+			else toShow=toShow+carrierName+" "+networkOperator.substring(0,3)+"-"+networkOperator.substring(3);
 
 			if (networkOperator.length()==0) //to show NO CARRIER
 				toShow=toShow+getResources().getString(R.string.string1)+" ("+operatorName+":"+operatorCountryISO+")";
@@ -131,8 +131,7 @@ public class RoamingInfoService extends Service
 					editor.putString("sci2",operatorCountryISO2);
 					editor.commit();
 					if (roaming2) toShow2="[2] "+carrierName2+":"+carrierCountry2+" ("+operatorName2+":"+operatorCountryISO2+")";
-					else toShow2="[2] "+carrierName2+" "+networkOperator2;
-
+					else toShow2="[2] "+carrierName2+" "+networkOperator2.substring(0,3)+"-"+networkOperator2.substring(3);
 					if (networkOperator2.length()==0) //to show NO CARRIER
 						toShow2="[2] "+getResources().getString(R.string.string1)+" ("+operatorName2+":"+operatorCountryISO2+")";
 
