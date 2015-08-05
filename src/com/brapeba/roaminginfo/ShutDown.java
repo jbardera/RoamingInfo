@@ -21,7 +21,7 @@ public class ShutDown extends Activity
 		nm.cancel(110); // to remove the notification for data connection state
 		ComponentName receiver = new ComponentName(this, StaticConChgReceiver.class);
 	    PackageManager pm = this.getPackageManager();
-	    pm.setComponentEnabledSetting(receiver,PackageManager.COMPONENT_ENABLED_STATE_DISABLED,PackageManager.DONT_KILL_APP);
+	    pm.setComponentEnabledSetting(receiver,PackageManager.COMPONENT_ENABLED_STATE_DISABLED,0);
 		finish();
 	}
 }

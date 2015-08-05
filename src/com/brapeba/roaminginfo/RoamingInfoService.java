@@ -23,7 +23,7 @@ public class RoamingInfoService extends Service
 	private String operatorCountryISO,operatorCountryISO2;
 	private String networkOperator,networkOperator2; //MCC+MNC of current operator, to display its icon
 	private boolean roaming,roaming2;
-	private String toShow,toShow2;
+	private String toShow,toShow2,toShowD;
 	private final static int SIM1=0,SIM2=1;
 	private boolean weMtk=true,chgTs=false,chgTs2=false;
 	TelephonyManagerEx mgMtk;
@@ -56,7 +56,7 @@ public class RoamingInfoService extends Service
 		String nci = mySettings.getString("nci","null");
 		String son = mySettings.getString("son","null");
 		String sci = mySettings.getString("sci","null");
-
+		
 		nm= (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
 
 		//code below for operator info (roaming)
@@ -158,9 +158,14 @@ public class RoamingInfoService extends Service
 			Boolean showme = mySettings.getBoolean("showdata",true); 
 			if (showme)
 			{
+				if (weMtk)
+				{
+					if (mgMtk.getDataState(0)!=0) toShowD="[1] "+getResources().getString(R.string.string6); 
+					else toShowD="[2] "+getResources().getString(R.string.string6);
+				} else toShowD="";
 				Notification noti2 = new Notification(R.drawable.dataon3,getResources().getString(R.string.string6),System.currentTimeMillis());
 				PendingIntent iPendiente2 = PendingIntent.getActivity(this, 0, new Intent(this, ShutDataNot.class), Intent.FLAG_ACTIVITY_NO_HISTORY);
-				noti2.setLatestEventInfo(this,getResources().getString(R.string.string6),getResources().getString(R.string.string8), iPendiente2);
+				noti2.setLatestEventInfo(this,toShowD,getResources().getString(R.string.string8), iPendiente2);
 				//noti2.defaults |=Notification.DEFAULT_SOUND;
 				noti2.flags|=Notification.FLAG_AUTO_CANCEL;
 				//notification.defaults |= Notification.DEFAULT_VIBRATE;
