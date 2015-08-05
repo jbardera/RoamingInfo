@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="icon_names_prefix">ic_stat_notify_</string>
+    <string name="app_name">Roaming Info</string>
+    <string name="string1">NO CARRIER</string>
+    <string name="string3">اضغط للخروج من التطبيق</string>
+    <string name="string4">Roaming Info\nالتي</string>
+    <string name="string5">Roaming Info\nتوقفت</string>
+	<string name="string6">تمكين البيانات</string>
+	<string name="string7">تم تعطيل بيانات</string>
+	<string name="string8">انقر للا تظهر المزيد من هذا الإخطار</string>
+</resources>
