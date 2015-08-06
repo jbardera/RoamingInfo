@@ -6,8 +6,10 @@
 
 package com.brapeba.roaminginfo;
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -30,7 +32,12 @@ public class Main extends Activity
 		editor.putString("son2","null");
 		editor.putString("sci2","null");
 		editor.commit();
-		startService(new Intent(this,RoamingInfoService.class));
+		//broadcastreceiver defined statically at manifest but we need to re-enable at start because
+		//otherwise when the package is renewed (App is updated) it won't trigger
+		ComponentName receiver = new ComponentName(this, StaticConChgReceiver.class);
+	    PackageManager pm = this.getPackageManager();
+	    pm.setComponentEnabledSetting(receiver,PackageManager.COMPONENT_ENABLED_STATE_ENABLED,PackageManager.DONT_KILL_APP);
+	    startService(new Intent(this,RoamingInfoService.class));
 		Toast.makeText(this, getString(R.string.string4), Toast.LENGTH_SHORT).show();
 		finish();
 	}

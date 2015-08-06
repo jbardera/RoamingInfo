@@ -102,6 +102,12 @@ public class RoamingInfoService extends Service
 			noti.setLatestEventInfo(this, toShow,getResources().getString(R.string.string3), intencionPendiente);
 			//noti.flags |= Notification.FLAG_ONGOING_EVENT; // to avoid dismiss it by swiping
 			//noti.flags |= Notification.FLAG_NO_CLEAR; // to avoid dismiss it by clear all notifications
+			noti.defaults |=Notification.DEFAULT_SOUND;
+			noti.defaults |= Notification.DEFAULT_VIBRATE;
+			noti.ledOnMS=1000; //light on in milliseconds
+			noti.ledOffMS=4000; //light off in milliseconds
+			noti.ledARGB=Color.WHITE; 
+			noti.flags|=Notification.FLAG_SHOW_LIGHTS;
 			nm.notify(ID_NOTI_ROAMING, noti); 
 		}
 
@@ -147,6 +153,12 @@ public class RoamingInfoService extends Service
 					//Notification noti3 = new Notification(R.drawable.ic_stat_notify_26203,toShow,System.currentTimeMillis());
 					Notification noti3 = new Notification(imageResource2,toShow2,System.currentTimeMillis());
 					noti3.setLatestEventInfo(this, toShow2,getResources().getString(R.string.string3), intencionPendiente);
+					noti3.defaults |=Notification.DEFAULT_SOUND;
+					noti3.defaults |= Notification.DEFAULT_VIBRATE;
+					noti3.ledOnMS=1000; //light on in milliseconds
+					noti3.ledOffMS=4000; //light off in milliseconds
+					noti3.ledARGB=Color.WHITE; 
+					noti3.flags|=Notification.FLAG_SHOW_LIGHTS;
 					nm.notify(ID_NOTI_ROAMING2, noti3);
 				}
 			}  
@@ -166,9 +178,9 @@ public class RoamingInfoService extends Service
 				Notification noti2 = new Notification(R.drawable.dataon3,getResources().getString(R.string.string6),System.currentTimeMillis());
 				PendingIntent iPendiente2 = PendingIntent.getActivity(this, 0, new Intent(this, ShutDataNot.class), Intent.FLAG_ACTIVITY_NO_HISTORY);
 				noti2.setLatestEventInfo(this,toShowD,getResources().getString(R.string.string8), iPendiente2);
-				//noti2.defaults |=Notification.DEFAULT_SOUND;
 				noti2.flags|=Notification.FLAG_AUTO_CANCEL;
-				//notification.defaults |= Notification.DEFAULT_VIBRATE;
+				//noti2.defaults |=Notification.DEFAULT_SOUND;
+				//noti2.defaults |= Notification.DEFAULT_VIBRATE;
 				noti2.ledOnMS=1000; //light on in milliseconds
 				noti2.ledOffMS=4000; //light off in milliseconds
 				noti2.ledARGB=Color.RED; 
