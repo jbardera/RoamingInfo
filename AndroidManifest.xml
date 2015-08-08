@@ -15,32 +15,34 @@
         android:enabled="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+         >
 
         <activity
-            android:name="com.brapeba.roaminginfo.Main">
+            android:name=".Main"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.brapeba.roaminginfo.ShutDown">
-        </activity>
-        <activity
-            android:name="com.brapeba.roaminginfo.ShutDataNot">
-        </activity>
-        <activity
-            android:name="com.brapeba.roaminginfo.Setttings"
+            android:name=".Settings"
+            android:theme="@android:style/Theme.Black"
             android:label="@string/string9" >
+        </activity>
+        <activity
+            android:name=".ShutDown">
+        </activity>
+        <activity
+            android:name=".ShutDataNot">
         </activity>
 
         <service
-            android:name="com.brapeba.roaminginfo.RoamingInfoService"
+            android:name=".RoamingInfoService"
             android:process=":service" />
         
         <receiver 
-            android:name="com.brapeba.roaminginfo.StaticConChgReceiver"
+            android:name=".StaticConChgReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>

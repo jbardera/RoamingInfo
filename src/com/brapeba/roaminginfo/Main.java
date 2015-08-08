@@ -40,9 +40,8 @@ public class Main extends Activity
 	    pm.setComponentEnabledSetting(receiver,PackageManager.COMPONENT_ENABLED_STATE_ENABLED,PackageManager.DONT_KILL_APP);
 	    startService(new Intent(this,RoamingInfoService.class));
 		Toast.makeText(this, getString(R.string.string4), Toast.LENGTH_SHORT).show();
-		//finish();
-		//onStop();
 		moveTaskToBack(true);
+		//finish();
 	}
 	
 	@Override protected void onRestart() 
@@ -50,7 +49,5 @@ public class Main extends Activity
 		super.onRestart();
 		Intent iMS = new Intent(this, Settings.class);
 		startActivity(iMS);
-		moveTaskToBack(true);
 	}
-
 }

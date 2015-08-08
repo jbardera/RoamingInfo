@@ -12,6 +12,7 @@ import android.os.Bundle;
 public class ShutDataNot extends Activity 
 {
 	final String PREFS = "MyPrefs";
+	SharedPreferences mySettings;
 	
 	@Override public void onCreate(Bundle savedInstanceState) 
 	{
@@ -30,8 +31,6 @@ public class ShutDataNot extends Activity
 
 	@Override protected void onResume() 
 	{
-		SharedPreferences mySettings;
-		
 		super.onResume();
 		mySettings = getSharedPreferences(PREFS, MODE_MULTI_PROCESS);
 		SharedPreferences.Editor editor = mySettings.edit();
