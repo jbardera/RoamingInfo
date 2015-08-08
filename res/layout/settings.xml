@@ -15,18 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/string10"
-        android:text="ToggleButton" />
-
-    <Button
-        android:id="@+id/ssexit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/esound"
-        android:layout_alignRight="@+id/editText1"
-        android:layout_below="@+id/editText1"
-        android:layout_marginTop="14dp"
-        android:text="@string/string12"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+         />
 
     <TextView
         android:id="@+id/editText1"
@@ -35,8 +24,62 @@
         android:layout_alignBottom="@+id/esound"
         android:layout_alignTop="@+id/esound"
         android:layout_toRightOf="@+id/esound"
+        android:layout_toEndOf="@+id/esound"
         android:ems="10"
         android:text="@string/string10"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <ToggleButton
+        android:id="@+id/evibrate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/esound"
+        android:contentDescription="@string/string10"
+        />
+
+    <TextView
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/evibrate"
+        android:layout_alignTop="@+id/evibrate"
+        android:layout_toRightOf="@+id/evibrate"
+        android:layout_toEndOf="@+id/evibrate"
+        android:ems="10"
+        android:text="@string/string13"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+        <ToggleButton
+        android:id="@+id/edata"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/evibrate"
+        android:contentDescription="@string/string14"
+         />
+
+    <TextView
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/edata"
+        android:layout_alignTop="@+id/edata"
+        android:layout_toRightOf="@+id/edata"
+        android:layout_toEndOf="@+id/edata"
+        android:ems="10"
+        android:text="@string/string14"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
+    <Button
+        android:id="@+id/ssexit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/edata"
+        android:layout_alignStart="@+id/edata"
+        android:layout_alignRight="@+id/editText3"
+        android:layout_alignEnd="@+id/editText3"
+        android:layout_below="@+id/editText3"
+        android:layout_marginTop="14dp"
+        android:text="@string/string12"
         android:textAppearance="?android:attr/textAppearanceLarge" />
   
 </RelativeLayout>

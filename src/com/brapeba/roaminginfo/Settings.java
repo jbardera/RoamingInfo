@@ -17,38 +17,59 @@ import android.widget.ToggleButton;
 
 public class Settings extends Activity 
 {
-	ToggleButton tBsound;
+	ToggleButton tBsound,tBvibrate,tBshowdata;
 	Button btn;
 	SharedPreferences mySettings;
 	final String PREFS = "MyPrefs";
+	SharedPreferences.Editor editor;
 	
     @Override public void onCreate(Bundle savedInstanceState) 
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.settings);
-		tBsound= (ToggleButton) findViewById(R.id.esound);
-		mySettings = getSharedPreferences(PREFS, MODE_MULTI_PROCESS);
-		Boolean bsound= mySettings.getBoolean("sound",true);
-		tBsound.setChecked(bsound);
-		tBsound.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) 
-			{
-				//save settings
-				SharedPreferences.Editor editor = mySettings.edit();
-				if (tBsound.isChecked()) editor.putBoolean("sound",true); else editor.putBoolean("sound",false); 
-				editor.commit();
-			}
+   		setContentView(R.layout.settings);
+		tBsound=(ToggleButton)findViewById(R.id.esound);
+		tBvibrate=(ToggleButton)findViewById(R.id.evibrate);
+		tBshowdata=(ToggleButton)findViewById(R.id.edata);
+		mySettings=getSharedPreferences(PREFS, MODE_MULTI_PROCESS);
+		tBsound.setChecked(mySettings.getBoolean("sound",true));
+		tBvibrate.setChecked(mySettings.getBoolean("vibrate",true));
+		tBshowdata.setChecked(mySettings.getBoolean("showdata",true));
+		editor=mySettings.edit();
+		tBsound.setOnClickListener(new OnClickListener() { @Override public void onClick(View v) 
+		{
+			//save settings
+			if (tBsound.isChecked()) editor.putBoolean("sound",true); else editor.putBoolean("sound",false); 
+			editor.commit();
+		}
+		});
+		tBvibrate.setOnClickListener(new OnClickListener() { @Override public void onClick(View v) 
+		{
+			//save settings
+			if (tBvibrate.isChecked()) editor.putBoolean("vibrate",true); else editor.putBoolean("vibrate",false); 
+			editor.commit();
+		}
 		});
 		btn= (Button) findViewById(R.id.ssexit);
-		btn.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) 
-			{
-				moveTaskToBack(true);
-			}
+		btn.setOnClickListener(new OnClickListener() { @Override public void onClick(View v) 
+		{
+			moveTaskToBack(true);
+		}
 		});
-    }
+		tBshowdata.setOnClickListener(new OnClickListener() { @Override public void onClick(View v) 
+		{
+			//save settings
+			if (tBshowdata.isChecked()) editor.putBoolean("showdata",true); else editor.putBoolean("showdata",false); 
+			editor.commit();
+		}
+		});
+		btn= (Button) findViewById(R.id.ssexit);
+		btn.setOnClickListener(new OnClickListener() { @Override public void onClick(View v) 
+		{
+			moveTaskToBack(true);
+		}
+	});
+	}
+    
     @Override public void onPause() 
     {
     	startService(new Intent(this,RoamingInfoService.class));

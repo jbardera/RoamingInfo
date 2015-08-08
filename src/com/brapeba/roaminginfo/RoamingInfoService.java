@@ -57,6 +57,7 @@ public class RoamingInfoService extends Service
 		String son = mySettings.getString("son","null");
 		String sci = mySettings.getString("sci","null");
 		Boolean sound= mySettings.getBoolean("sound",true);
+		Boolean vibrate= mySettings.getBoolean("vibrate",true);
 		
 		nm= (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
 
@@ -104,7 +105,7 @@ public class RoamingInfoService extends Service
 			//noti.flags |= Notification.FLAG_ONGOING_EVENT; // to avoid dismiss it by swiping
 			//noti.flags |= Notification.FLAG_NO_CLEAR; // to avoid dismiss it by clear all notifications
 			if (sound) noti.defaults |=Notification.DEFAULT_SOUND;
-			noti.defaults |= Notification.DEFAULT_VIBRATE;
+			if (vibrate) noti.defaults |= Notification.DEFAULT_VIBRATE;
 			noti.ledOnMS=1000; //light on in milliseconds
 			noti.ledOffMS=4000; //light off in milliseconds
 			noti.ledARGB=Color.WHITE; 
@@ -154,8 +155,8 @@ public class RoamingInfoService extends Service
 					//Notification noti3 = new Notification(R.drawable.ic_stat_notify_26203,toShow,System.currentTimeMillis());
 					Notification noti3 = new Notification(imageResource2,toShow2,System.currentTimeMillis());
 					noti3.setLatestEventInfo(this, toShow2,getResources().getString(R.string.string3), intencionPendiente);
-					if (sound ) noti3.defaults |=Notification.DEFAULT_SOUND;
-					noti3.defaults |= Notification.DEFAULT_VIBRATE;
+					if (sound) noti3.defaults |=Notification.DEFAULT_SOUND;
+					if (vibrate) noti3.defaults |= Notification.DEFAULT_VIBRATE;
 					noti3.ledOnMS=1000; //light on in milliseconds
 					noti3.ledOffMS=4000; //light off in milliseconds
 					noti3.ledARGB=Color.WHITE; 

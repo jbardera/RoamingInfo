@@ -9,4 +9,10 @@
 	<string name="string6">上のデータ (細胞の)</string>
 	<string name="string7">データオフ (細胞の)</string>
 	<string name="string8">もっとこの通知を表示しないためにタップします</string>
+	<string name="string9">[設定]</string>
+	<string name="string10">聞こえる</string>
+	<string name="string11">設定を保存します</string>
+	<string name="string12">出口</string>
+	<string name="string13">振動</string>
+	<string name="string14">データの通知</string>
 </resources>

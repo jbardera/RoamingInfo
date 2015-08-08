@@ -9,4 +9,10 @@
 	<string name="string6">تمكين البيانات</string>
 	<string name="string7">تم تعطيل بيانات</string>
 	<string name="string8">انقر للا تظهر المزيد من هذا الإخطار</string>
+	<string name="string9">الإعدادات</string>
+	<string name="string10">صوت</string>
+	<string name="string11">احفظ التغييرات</string>
+	<string name="string12">خروج</string>
+	<string name="string13">اهتزاز</string>
+	<string name="string14">الإخطارات البيانات</string>
 </resources>

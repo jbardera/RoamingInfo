@@ -9,4 +9,10 @@
 	<string name="string6">数据启用 (细胞的)</string>
 	<string name="string7">数据禁用 (细胞的)</string>
 	<string name="string8">点击可不要表现出更多的这个通知</string>
+	<string name="string9">[設定]</string>
+	<string name="string10">聞こえる</string>
+	<string name="string11">設定を保存します</string>
+	<string name="string12">出口</string>
+	<string name="string13">振動</string>
+	<string name="string14">データの通知</string>
 </resources>

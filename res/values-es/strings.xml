@@ -9,4 +9,10 @@
     <string name="string6">Conexión de datos ACTIVA (móvil)</string>
 	<string name="string7">Conexión de datos DESACTIVADA (móvil)</string>
 	<string name="string8">Pulsa para no mostrar más esta notificación</string>
+	<string name="string9">Roaming Info Configuración</string>
+	<string name="string10">Sonido</string>
+	<string name="string11">Grabar configuración</string>
+	<string name="string12">Salir</string>
+	<string name="string13">Vibración</string>
+	<string name="string14">Notificaciones de datos</string>
 </resources>

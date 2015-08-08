@@ -9,4 +9,10 @@
     <string name="string6">Conexão de dados ATIVA (celular)</string>
 	<string name="string7">Conexão de dados DESATIVADA (celular)</string>
 	<string name="string8">Click para não mostrar mais esta notificação</string>
+	<string name="string9">Roaming Info Configuração</string>
+	<string name="string10">Som</string>
+	<string name="string11">Guardar configuração</string>
+	<string name="string12">Sair</string>
+	<string name="string13">Vibração</string>
+	<string name="string14">Notificações de dados</string>
 </resources>
