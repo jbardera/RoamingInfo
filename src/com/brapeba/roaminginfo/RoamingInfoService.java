@@ -107,7 +107,7 @@ public class RoamingInfoService extends Service
 			noti.ledOnMS=1000; //light on in milliseconds
 			noti.ledOffMS=4000; //light off in milliseconds
 			noti.ledARGB=Color.WHITE; 
-			noti.flags|=Notification.FLAG_SHOW_LIGHTS;
+			//noti.flags|=Notification.FLAG_SHOW_LIGHTS;
 			nm.notify(ID_NOTI_ROAMING, noti); 
 		}
 
@@ -158,7 +158,7 @@ public class RoamingInfoService extends Service
 					noti3.ledOnMS=1000; //light on in milliseconds
 					noti3.ledOffMS=4000; //light off in milliseconds
 					noti3.ledARGB=Color.WHITE; 
-					noti3.flags|=Notification.FLAG_SHOW_LIGHTS;
+					//noti3.flags|=Notification.FLAG_SHOW_LIGHTS;
 					nm.notify(ID_NOTI_ROAMING2, noti3);
 				}
 			}  

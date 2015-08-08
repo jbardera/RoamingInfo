@@ -1,10 +1,11 @@
-/* 
+/**
+ * @author      Joanmi Bardera <joanmibb@gmail.com>
  * app icon from http://crazeric.deviantart.com/ - CC license
  * 
  */
 
-
 package com.brapeba.roaminginfo;
+
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -39,6 +40,17 @@ public class Main extends Activity
 	    pm.setComponentEnabledSetting(receiver,PackageManager.COMPONENT_ENABLED_STATE_ENABLED,PackageManager.DONT_KILL_APP);
 	    startService(new Intent(this,RoamingInfoService.class));
 		Toast.makeText(this, getString(R.string.string4), Toast.LENGTH_SHORT).show();
-		finish();
+		//finish();
+		//onStop();
+		moveTaskToBack(true);
 	}
+	
+	@Override protected void onRestart() 
+	{
+		super.onRestart();
+		Intent iMS = new Intent(this, Settings.class);
+		startActivity(iMS);
+		moveTaskToBack(true);
+	}
+
 }

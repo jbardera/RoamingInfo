@@ -9,4 +9,8 @@
 	<string name="string6">Data ENABLED (cellular)</string>
 	<string name="string7">Data DISABLED (cellular)</string>
 	<string name="string8">Tap to do not show more this notification</string>
+	<string name="string9">Roaming Info Settings</string>
+	<string name="string10">Enable sound</string>
+	<string name="string11">Save settings</string>
+	<string name="string12">Exit</string>
 </resources>

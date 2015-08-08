@@ -1,3 +1,8 @@
+/**
+ * @author      Joanmi Bardera <joanmibb@gmail.com>
+ *          
+ */
+
 package com.brapeba.roaminginfo;
 
 import android.app.Activity;
