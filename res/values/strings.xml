@@ -15,4 +15,5 @@
 	<string name="string12">Exit</string>
 	<string name="string13">Toggle vibration</string>
 	<string name="string14">Data notifications</string>
+	<string name="string15">Start on boot</string>
 </resources>
