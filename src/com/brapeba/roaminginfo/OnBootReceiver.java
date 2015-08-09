@@ -5,18 +5,23 @@
 
 package com.brapeba.roaminginfo;
 
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 
 public class OnBootReceiver extends BroadcastReceiver 
 {
 	final String PREFS = "MyPrefs";
-	SharedPreferences mySettings;
+	static SharedPreferences mySettings;
 	
+	@SuppressLint("InlinedApi")
 	@Override public void onReceive(Context context, Intent intent) 
 	{
+		if (Build.VERSION.SDK_INT>=11) mySettings = context.getSharedPreferences(PREFS, Context.MODE_MULTI_PROCESS);
+		else mySettings = context.getSharedPreferences(PREFS,0);
 		Boolean boot=mySettings.getBoolean("boot",true);
 		if (boot) 
 		{ 

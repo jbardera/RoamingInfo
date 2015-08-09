@@ -8,6 +8,7 @@ package com.brapeba.roaminginfo;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,7 +32,8 @@ public class Settings extends Activity
 		tBvibrate=(ToggleButton)findViewById(R.id.evibrate);
 		tBshowdata=(ToggleButton)findViewById(R.id.edata);
 		tBboot=(ToggleButton)findViewById(R.id.eboot);
-		mySettings=getSharedPreferences(PREFS, MODE_MULTI_PROCESS);
+		if (Build.VERSION.SDK_INT>=11) mySettings = getSharedPreferences(PREFS, MODE_MULTI_PROCESS);
+		else mySettings = getSharedPreferences(PREFS,0);
 		tBsound.setChecked(mySettings.getBoolean("sound",true));
 		tBvibrate.setChecked(mySettings.getBoolean("vibrate",true));
 		tBshowdata.setChecked(mySettings.getBoolean("showdata",true));

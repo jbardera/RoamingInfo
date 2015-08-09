@@ -7,6 +7,7 @@ package com.brapeba.roaminginfo;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 
 public class ShutDataNot extends Activity 
@@ -32,7 +33,8 @@ public class ShutDataNot extends Activity
 	@Override protected void onResume() 
 	{
 		super.onResume();
-		mySettings = getSharedPreferences(PREFS, MODE_MULTI_PROCESS);
+		if (Build.VERSION.SDK_INT>=11) mySettings = getSharedPreferences(PREFS, MODE_MULTI_PROCESS);
+		else mySettings = getSharedPreferences(PREFS,0);
 		SharedPreferences.Editor editor = mySettings.edit();
 		editor.putBoolean("showdata",false);
 		editor.commit();

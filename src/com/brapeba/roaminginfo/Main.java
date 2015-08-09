@@ -11,6 +11,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -22,7 +23,8 @@ public class Main extends Activity
 	@Override public void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
-		mySettings = getSharedPreferences(PREFS, MODE_MULTI_PROCESS);
+		if (Build.VERSION.SDK_INT>=11) mySettings = getSharedPreferences(PREFS, MODE_MULTI_PROCESS);
+		else mySettings = getSharedPreferences(PREFS,0);
 		SharedPreferences.Editor editor = mySettings.edit();
 		editor.putString("non","null");
 		editor.putString("nci","null");

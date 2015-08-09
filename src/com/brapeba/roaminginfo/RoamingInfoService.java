@@ -1,6 +1,5 @@
 package com.brapeba.roaminginfo;
 
-import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -24,7 +23,7 @@ public class RoamingInfoService extends Service
 	private String networkOperator,networkOperator2; //MCC+MNC of current operator, to display its icon
 	private boolean roaming,roaming2;
 	private String toShow,toShow2,toShowD;
-	private final static int SIM1=0,SIM2=1;
+	private final static int SIM2=1; //SIM1=0 as per Mediatek API
 	private boolean weMtk=true,chgTs=false,chgTs2=false;
 	TelephonyManagerEx mgMtk;
 	NotificationManager nm;
@@ -41,7 +40,6 @@ public class RoamingInfoService extends Service
 		super.onCreate();
 	}
 
-	@SuppressLint("InlinedApi")
 	@SuppressWarnings("deprecation")
 	@Override public int onStartCommand(Intent intenc, int flags, int idArranque) 
 	{
@@ -49,8 +47,8 @@ public class RoamingInfoService extends Service
 
 		TelephonyManager mg = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
 
-		if (Build.VERSION.SDK_INT>=11) mySettings = getSharedPreferences("MyPrefs", Context.MODE_MULTI_PROCESS);
-		else mySettings = getSharedPreferences("MyPrefs",0);
+		if (Build.VERSION.SDK_INT>=11) mySettings = getSharedPreferences(PREFS, MODE_MULTI_PROCESS);
+		else mySettings = getSharedPreferences(PREFS,0);
 
 		String non = mySettings.getString("non","null");
 		String nci = mySettings.getString("nci","null");
