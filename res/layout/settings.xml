@@ -65,34 +65,15 @@
         android:text="@string/string14"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     
-     <ToggleButton
-        android:id="@+id/eboot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edata"
-        android:contentDescription="@string/string15" />
-
-    <TextView
-        android:id="@+id/editText4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/eboot"
-        android:layout_alignTop="@+id/eboot"
-        android:layout_toEndOf="@+id/eboot"
-        android:layout_toRightOf="@+id/eboot"
-        android:ems="10"
-        android:text="@string/string15"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
     <Button
         android:id="@+id/ssexit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/editText4"
-        android:layout_alignLeft="@+id/eboot"
-        android:layout_alignRight="@+id/editText4"
-        android:layout_alignStart="@+id/eboot"
-        android:layout_below="@+id/editText4"
+        android:layout_alignEnd="@+id/editText3"
+        android:layout_alignLeft="@+id/edata"
+        android:layout_alignRight="@+id/editText3"
+        android:layout_alignStart="@+id/edata"
+        android:layout_below="@+id/editText3"
         android:layout_marginTop="14dp"
         android:text="@string/string12"
         android:textAppearance="?android:attr/textAppearanceLarge" />

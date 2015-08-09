@@ -28,7 +28,6 @@ public class RoamingInfoService extends Service
 	TelephonyManagerEx mgMtk;
 	NotificationManager nm;
 	StaticConChgReceiver changeReceiver;
-	final String tag="Roaming Info";
 	int ID_NOTI_ROAMING = 100;
 	int ID_NOTI_ROAMING2 = 101; //2nd SIM Mediatek
 	int ID_NOTI_DATA = 110;
