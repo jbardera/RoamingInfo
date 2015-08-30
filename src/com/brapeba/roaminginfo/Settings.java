@@ -66,6 +66,11 @@ public class Settings extends Activity
 	});
 	}
     
+    @Override public void onBackPressed()
+    {
+        moveTaskToBack(true);
+    }
+    
     @Override public void onPause() 
     {
     	startService(new Intent(this,RoamingInfoService.class));
