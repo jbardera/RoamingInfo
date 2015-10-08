@@ -9,4 +9,4 @@ Displays a notification with current operator's name  and in case of roaming it 
 
 If you swipe (dismiss) the notification, a new one will be displayed when a change in the conexion occurs. To remove the service from memory and avoid further notifications, just tap the notification.
 
-Start again the app to show the settings activity, to enable/disable sound, vibration and data notifications.
+Double click the app icon to show the settings activity: to enable/disable sound, vibration and data notifications.
